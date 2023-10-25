@@ -79,9 +79,8 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<div class="fixed-bottom">
+
 <?php include 'footer.php'; ?>
-</div>
 
 <!-- Agrega Bootstrap JavaScript si es necesario -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
