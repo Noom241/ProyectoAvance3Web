@@ -94,13 +94,14 @@ include 'navbar.php';
                             <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
                             <p class="card-text">Precio: $<?php echo $row['precio']; ?></p>
                             <button class="btn btn-primary addToCart" data-product-name="<?php echo $row['nombre']; ?>" data-product-price="<?php echo $row['precio']; ?>">Añadir al carrito</button>
+                            <a href="product_detail.php?id=<?php echo $row['id']; ?>" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
             <?php endwhile; ?>
         </div>
     </div>
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
     <script src="shop/main.js"></script>

@@ -192,10 +192,10 @@
             </div>
         </div>
     </div>
+    <?php
+        include 'footer.php';
+        ?>
 
-    <footer class="bg-secondary text-white text-center py-2">
-        &copy; 2023 Mueblería Joaquín
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
