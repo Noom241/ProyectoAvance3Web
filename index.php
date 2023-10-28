@@ -122,11 +122,11 @@
     </div>
 
     <div class="col-md-12 text-white bg-white">
-        <div class="row p-5">
+        <div class="row p-5 about">
             <div class="col-md-6 p-5">
                 <div style="font-family: Arial, sans-serif; margin: 0">
                     <section style="display: inline-block" class="text-dark">
-                        <h2 class="text-primary text-center">Acerca de Nosotros</h2>
+                        <h2 class="text-primary-about text-center">Acerca de Nosotros</h2>
                         <p class="text-center">
                             Somos una empresa peruana de mueblería comprometida con la
                             satisfacción de nuestros clientes. Fundada en 1990, Mueblería
@@ -185,7 +185,7 @@
                         <img src="https://magensa.pe/wp-content/uploads/2021/06/united-white.png" alt="..."
                             class="mis_vis">
                         <h2 class="text-dark">Misión</h2>
-                        <p>
+                        <p class="text-white">
                             En Mueblería Joaquín, nuestra misión es proporcionar a nuestros
                             clientes muebles de dormitorio excepcionales que combinen
                             funcionalidad, durabilidad y estilo. Nos comprometemos a ofrecer
@@ -205,7 +205,7 @@
                         <img src="https://magensa.pe/wp-content/uploads/2021/06/furnitures-white.png" alt="..."
                             class="mis_vis">
                         <h2 class="text-dark">Visión</h2>
-                        <p>
+                        <p class="text-white">
                             Ser reconocidos como líderes en la industria de muebles para
                             dormitorios, ofreciendo productos de alta calidad y diseño
                             exclusivo que transformen los espacios de nuestros clientes en

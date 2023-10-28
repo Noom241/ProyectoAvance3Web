@@ -17,6 +17,15 @@ body {
     margin: 0;
 }
 
+.about{
+    background-color: #FFEEDB;
+    
+}
+
+.text-primary-about{
+    color: #ED9B40;
+}
+
 
 /* Estilos para los títulos principales */
 h2 {
@@ -52,6 +61,8 @@ h2 {
     transition: transform 0.3s; /* Efecto de escala al pasar el mouse */
     padding: 20px;
 }
+
+
 
 .card:hover {
     transform: scale(1.05); /* Efecto de escala al pasar el mouse */
