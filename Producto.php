@@ -1,15 +1,16 @@
 <?php
-$host = 'roundhouse.proxy.rlwy.net';
-$port = 36354;
-$user = 'root';
-$password = 'drmy$5c@-f-_7eq7$wr8k@0n4lzv319$';
-$database = 'railway';
+$host = 'sql10.freesqldatabase.com';
+$port = 3306;
+$user = 'sql10657362';
+$password = 'EiL5HqgG7y';
+$database = 'sql10657362';
 
 $mysqli = new mysqli($host, $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
-    die("La conexión a la base de datos falló: " . $mysqli->connect_error);
+    die('No se pudo conectar a la base de datos: ' . $mysqli->connect_error);
 }
+
 
 // Realizar una consulta para obtener todos los productos
 $query = "SELECT * FROM muebles";
@@ -83,7 +84,7 @@ include 'navbar.php';
             </select>
         </div>
     </div>
-    <div class="products bg-primary col-md-9 p-5">
+    <div class="products bg-warning col-md-9 p-5">
         <!-- Lista de productos -->
         <div class="row w-100" id="productList">
             <?php while ($row = $result->fetch_assoc()): ?>
@@ -93,7 +94,7 @@ include 'navbar.php';
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
                             <p class="card-text">Precio: $<?php echo $row['precio']; ?></p>
-                            <button class="btn btn-primary addToCart" data-product-name="<?php echo $row['nombre']; ?>" data-product-price="<?php echo $row['precio']; ?>">Añadir al carrito</button>
+                            <!--<button class="btn btn-primary addToCart" data-product-name="<?php echo $row['nombre']; ?>" data-product-price="<?php echo $row['precio']; ?>">Añadir al carrito</button>-->
                             <a href="product_detail.php?id=<?php echo $row['id']; ?>" class="btn btn-info">Más información</a>
                         </div>
                     </div>

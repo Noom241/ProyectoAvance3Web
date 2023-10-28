@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div id="logo">
-            <a href="index.html">
+            <a href="index.php">
                 <img style="max-width: 200px" src="https://i.imgur.com/MVMden7.png" alt="logo" />
             </a>
         </div>

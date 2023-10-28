@@ -1,7 +1,8 @@
-.hero-carouserl img {
-    height: 95vh;
+.hero-c img {
+    height: 94vh !important;
     width: auto; /* El alto se ajusta automáticamente según la relación de aspecto original */
 }
+
 
 *{
     padding: 0;
@@ -93,3 +94,19 @@ blockquote p {
 .btn-primary:hover {
     background-color: #555;
 }
+
+.mobile{
+    display: none;
+}
+
+
+
+  @media screen and (orientation: portrait) {
+    .desktop {
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+  }
+  

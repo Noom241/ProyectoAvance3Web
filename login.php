@@ -1,15 +1,16 @@
 <?php
-$host = 'roundhouse.proxy.rlwy.net';
-$port = 36354;
-$user = 'root';
-$password = 'drmy$5c@-f-_7eq7$wr8k@0n4lzv319$';
-$database = 'railway';
+$host = 'sql10.freesqldatabase.com';
+$port = 3306;
+$user = 'sql10657362';
+$password = 'EiL5HqgG7y';
+$database = 'sql10657362';
 
 $mysqli = new mysqli($host, $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
     die('No se pudo conectar a la base de datos: ' . $mysqli->connect_error);
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];

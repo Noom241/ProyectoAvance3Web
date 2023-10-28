@@ -7,31 +7,126 @@
     <title>Mueblería Joaquín</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body class="bg-primary">
-        <?php
+    <?php
         include 'navbar.php';
         ?>
-    <div id="carouselExample" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner hero-c"></div>
 
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+    <div id="carouselExampleMobile" class="carousel slide mobile" data-ride="carousel">
+        <?php
+        $host = 'sql10.freesqldatabase.com';
+        $port = 3306;
+        $user = 'sql10657362';
+        $password = 'EiL5HqgG7y';
+        $database = 'sql10657362';
+
+        $mysqli = new mysqli($host, $user, $password, $database, $port);
+
+        if ($mysqli->connect_error) {
+            die("La conexión a la base de datos falló: " . $mysqli->connect_error);
+        }
+
+        // Consulta SQL para obtener las URL de la tabla "desktop"
+        $query = "SELECT url FROM mobile";
+        $result = $mysqli->query($query);
+
+        if ($result) {
+            // Contador para establecer la clase 'active' en el primer elemento
+            $count = 0;
+
+            echo '<div class="carousel-inner hero-c">';
+
+            while ($row = $result->fetch_assoc()) {
+                $urlImagen = $row['url'];
+                // Agregar la clase 'active' al primer elemento
+                $activeClass = ($count === 0) ? 'active' : '';
+                echo '<div class="carousel-item ' . $activeClass . '">';
+                echo '<img class="d-block w-100" src="' . $urlImagen . '" alt="Slide">';
+                echo '</div>';
+                $count++;
+            }
+
+            echo '</div>';
+
+            $result->free();
+        } else {
+            echo "Error al consultar la base de datos: " . $mysqli->error;
+        }
+
+        $mysqli->close();
+        ?>
+        <a class="carousel-control-prev" href="#carouselExampleMobile" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <a class="carousel-control-next" href="#carouselExampleMobile" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" ariahidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
 
-    <div class="container col-md-12 text-white bg-white">
+    <div id="carouselExampleDesktop" class="carousel slide desktop" data-ride="carousel">
+        <?php
+        $host = 'sql10.freesqldatabase.com';
+        $port = 3306;
+        $user = 'sql10657362';
+        $password = 'EiL5HqgG7y';
+        $database = 'sql10657362';
+
+        $mysqli = new mysqli($host, $user, $password, $database, $port);
+
+        if ($mysqli->connect_error) {
+            die("La conexión a la base de datos falló: " . $mysqli->connect_error);
+        }
+
+        // Consulta SQL para obtener las URL de la tabla "desktop"
+        $query = "SELECT url FROM desktop";
+        $result = $mysqli->query($query);
+
+        if ($result) {
+            // Contador para establecer la clase 'active' en el primer elemento
+            $count = 0;
+
+            echo '<div class="carousel-inner hero-c">';
+
+            while ($row = $result->fetch_assoc()) {
+                $urlImagen = $row['url'];
+                // Agregar la clase 'active' al primer elemento
+                $activeClass = ($count === 0) ? 'active' : '';
+                echo '<div class="carousel-item ' . $activeClass . '">';
+                echo '<img class="d-block w-100" src="' . $urlImagen . '" alt="Slide">';
+                echo '</div>';
+                $count++;
+            }
+
+            echo '</div>';
+
+            $result->free();
+        } else {
+            echo "Error al consultar la base de datos: " . $mysqli->error;
+        }
+
+        $mysqli->close();
+        ?>
+        <a class="carousel-control-prev" href="#carouselExampleDesktop" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleDesktop" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" ariahidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div class="col-md-12 text-white bg-white">
         <div class="row p-5">
             <div class="col-md-6 p-5">
                 <div style="font-family: Arial, sans-serif; margin: 0">
                     <section style="display: inline-block" class="text-dark">
-                        <h2 class="text-primary">Acerca de Nosotros</h2>
+                        <h2 class="text-primary text-center">Acerca de Nosotros</h2>
                         <p class="text-center">
                             Somos una empresa peruana de mueblería comprometida con la
                             satisfacción de nuestros clientes. Fundada en 1990, Mueblería
@@ -200,7 +295,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>

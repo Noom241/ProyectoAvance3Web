@@ -7,15 +7,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+body {
+  height: 100vh;
+  margin: 0; /* Elimina el margen predeterminado del cuerpo */
+  background: url("https://i.imgur.com/Zs3RVEu.jpeg") center/cover no-repeat; /* Simplifica las propiedades del fondo */
+}
+
+/* Estilos para el contenedor */
+.container {
+  margin: 0 auto;
+  padding: 20px 60px; /* Ajusta el orden de las propiedades y el espaciado */
+  background-color: white;
+  border-radius: 5%;
+  width: 30vw;
+}
+
+/* Estilos para el botón */
+.btn {
+  background-color: orange;
+  /* Agrega más estilos según sea necesario */
+}
     </style>
 </head>
 
-<body>
+<body class="d-flex align-items-center justify-content-center">
     <div class="container">
         <h2 class="text-center">Registro</h2>
         <form action="register.php" method="post">
@@ -36,6 +51,8 @@
 
             <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
         </form>
+
+        <p class="text-center mt-3">¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
