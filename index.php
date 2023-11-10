@@ -18,11 +18,12 @@
 
     <div id="carouselExampleMobile" class="carousel slide mobile" data-ride="carousel">
         <?php
-        $host = 'sql10.freesqldatabase.com';
-        $port = 3306;
-        $user = 'sql10657362';
-        $password = 'EiL5HqgG7y';
-        $database = 'sql10657362';
+        $host = 'monorail.proxy.rlwy.net';
+        $port = 39690;
+        $user = 'root';
+        $password = 'f1Eba51A546FcBHAHF4-FfDehAc243Gf';
+        $database = 'railway';
+
 
         $mysqli = new mysqli($host, $user, $password, $database, $port);
 
@@ -71,11 +72,12 @@
 
     <div id="carouselExampleDesktop" class="carousel slide desktop" data-ride="carousel">
         <?php
-        $host = 'sql10.freesqldatabase.com';
-        $port = 3306;
-        $user = 'sql10657362';
-        $password = 'EiL5HqgG7y';
-        $database = 'sql10657362';
+        $host = 'monorail.proxy.rlwy.net';
+        $port = 39690;
+        $user = 'root';
+        $password = 'f1Eba51A546FcBHAHF4-FfDehAc243Gf';
+        $database = 'railway';
+
 
         $mysqli = new mysqli($host, $user, $password, $database, $port);
 
