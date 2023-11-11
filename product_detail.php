@@ -1,9 +1,10 @@
 <?php
-$host = 'monorail.proxy.rlwy.net';
-$port = 39690;
-$user = 'root';
-$password = 'f1Eba51A546FcBHAHF4-FfDehAc243Gf';
-$database = 'railway';
+$host = 'srv1182.hstgr.io';
+$port = 3306;
+$user = 'u270190845_root';
+$password = '2683232Aa';
+$database = 'u270190845_muebleria';
+
 
 
 $mysqli = new mysqli($host, $user, $password, $database, $port);

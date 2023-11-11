@@ -1,9 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div id="logo">
-            <a href="index.php">
-                <img style="max-width: 200px" src="https://i.imgur.com/MVMden7.png" alt="logo" />
-            </a>
-        </div>
+<style>
+.stylePerso{
+    background-color: #E8E8E8 !important;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light stylePerso">
+    
+<a class="navbar-brand" href="index.php">
+    <img src="https://i.imgur.com/MVMden7.png" height="40" alt="">
+  </a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <?php
                           session_start(); // Inicia la sesión para verificar si el usuario ha iniciado sesión
                           if (isset($_SESSION['user_id'])) {
