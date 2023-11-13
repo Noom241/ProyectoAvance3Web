@@ -4,7 +4,7 @@
 
 
 <head>
-    <link rel="icon" href="icon.svg" type="image/x-icon">
+    <link rel="icon" href="img/logo_white.svg" type="image/x-icon">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mueblería Joaquín</title>
@@ -24,13 +24,30 @@
                     <h1 style="color: var(--marron-claro);">Estilos y<br>
                         <strong class="black_bold" style="color: var(--negro);">novedades</strong><br>
                     </h1>
-                    <a href="Producto.php" class="my-5">COMPRAR<i class="fa fa-angle-right"></i></a>
+                    <a href="Producto.php" class="my-5">COMPRAR <i class="fa fa-angle-right"></i></a>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
                 <div class="text-img mx-4">
-                    <img src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/bg.jpg"
-                        class="img-fluid ">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active bg-dark"></li>
+                            <li data-target="#carouselExampleSlidesOnly" data-slide-to="1" class="bg-dark"></li>
+
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block h-100 img-fluid"
+                                    src="https://teulat.es/wp-content/uploads/2021/04/teulat_sierra_tv2p3c_black_thumb-1-1380x670.png"
+                                    alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block h-100 img-fluid"
+                                    src="https://teulat.es/wp-content/uploads/2021/06/teulat_doric_tv_black_thumb-3.png"
+                                    alt="Third slide">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,108 +55,182 @@
 
 
     <div class="text-white slide col-xl-8 col-lg-12 col-md-12 col-sm-12 mx-auto p-5">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide shadow" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="bg-dark"></li>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row no-gutters">
-                        <div class="col-md-8 text-center"
-                            style="padding-top:12.5%; background-color:var(--marron-claro)">
-                            <h1 style="color: var(--blanco);" class="">50% DISCOUNT<br>
-                                <h1 class="black_bold" style="color: var(--negro);">the latest collection</h1>
-                            </h1>
-                        </div>
-                        <img src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/discount.jpg"
-                            alt="" class="image-flex col-md-4">
+                <?php
+
+// Configuración de la base de datos
+$hostname = 'srv1182.hstgr.io';
+$username = 'u270190845_root';
+$password = '2683232Aa';
+$database = 'u270190845_muebleria';
+$port = 3306;
+
+// Conexión a la base de datos
+$conn = new mysqli($hostname, $username, $password, $database, $port);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+// Consulta para obtener datos de la tabla "Datos"
+$query = "SELECT texto_primario, texto_secundario, imagen_url FROM Datos";
+$result = $conn->query($query);
+
+// Verificar si hay resultados
+if ($result->num_rows > 0) {
+    // Iniciar la cadena de HTML para el carrusel
+    $carouselHtml = '';
+
+    // Variable para controlar la clase "active" en el primer elemento
+    $firstItem = true;
+
+    // Recorrer los resultados y generar el HTML
+    while ($row = $result->fetch_assoc()) {
+        // Agregar la clase "active" solo al primer elemento
+        $carouselItemClass = $firstItem ? 'carousel-item active' : 'carousel-item';
+
+        // Generar el código HTML utilizando los valores de la base de datos
+        $carouselHtml .= "
+            <div class='$carouselItemClass'>
+                <div class='row no-gutters'>
+                    <div class='col-md-8 text-center' style='padding-top:12.5%; background-color:var(--marron-claro)'>
+                        <h1 style='color: var(--blanco);' class=''>{$row['texto_primario']}<br>
+                            <h1 class='black_bold' style='color: var(--negro);'>{$row['texto_secundario']}</h1>
+                        </h1>
                     </div>
+                    <img src='{$row['imagen_url']}' alt='' class='image-flex col-md-4'>
                 </div>
-                <div class="carousel-item">
-                    <div class="row no-gutters">
-                        <div class="col-md-8 text-center"
-                            style="padding-top:12.5%; background-color:var(--marron-claro)">
-                            <h1 style="color: var(--blanco);">50% DISCOUNT<br>
-                                <h1 class="black_bold" style="color: var(--negro);">the latest collection</h1>
-                            </h1>
-                        </div>
-                        <img src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/discount.jpg"
-                            alt="" class="image-flex col-md-4">
-                    </div>
-                </div>
+            </div>
+        ";
+
+        // Después del primer elemento, cambiar la variable a false para que no se agregue más la clase "active"
+        $firstItem = false;
+    }
+
+    // Imprimir el código HTML del carrusel
+    echo $carouselHtml;
+} else {
+    echo "No se encontraron datos en la tabla 'Datos'.";
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+
+?>
+
+
             </div>
         </div>
     </div>
     <div class="text-center p-4">
-        <h3 class="display-4 py-4" style="color:var(--marron-claro)">Trending <strong class="display-4"
-                style="color:var(--negro)">Categories</strong></h3>
+        <h3 class="display-4 py-4" style="color:var(--marron-claro)">Ultimos <strong class="display-4"
+                style="color:var(--negro)">Lanzamientos</strong></h3>
         <div class="row py-4">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5">
-                <img class="img-fluid"
-                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/2.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h1 class="display-6">Outdoor</h1>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <img class="img-fluid"
-                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/2.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h1 class="display-6">Outdoor</h1>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5">
-                <img class="img-fluid"
-                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/images/2.jpg"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <h1 class="display-6">Outdoor</h1>
-                </div>
-            </div>
+        <?php
+// Variables de conexión a la base de datos
+$hostname = 'srv1182.hstgr.io';
+$username = 'u270190845_root';
+$password = '2683232Aa';
+$database = 'u270190845_muebleria';
+$port = 3306;
+
+// Conexión a la base de datos
+$conn = new mysqli($hostname, $username, $password, $database, $port);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+// Consulta SQL para obtener 3 muebles aleatorios
+$query = "SELECT id, nombre, imagenURL FROM muebles ORDER BY RAND() LIMIT 3";
+$result = $conn->query($query);
+
+// Verificar si hay resultados
+if ($result->num_rows > 0) {
+    // Iterar sobre los resultados
+    $count = 1;
+    while ($row = $result->fetch_assoc()) {
+        // Agregar la clase 'py-5' al primero y al último
+        $pyClass = ($count == 1 || $count == 3) ? 'py-5' : '';
+
+        // Construir el código HTML
+        echo '<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 ' . $pyClass . '">';
+        echo '<img class="img-fluid rush" src="' . $row['imagenURL'] . '" alt="Card image cap">';
+        echo '<div class="card-body">';
+        echo '<h1 class="display-6">' . $row['nombre'] . '</h1>';
+        echo '</div>';
+        echo '</div>';
+
+        $count++;
+    }
+} else {
+    echo "No se encontraron muebles en la tabla 'muebles'.";
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+?>
+
+
         </div>
     </div>
 
     <div class="text-center p-4">
-        <h3 class="display-4 my-5" style="color:var(--marron-claro)">Featured <strong class="display-4"
-                style="color:var(--negro)">Brands</strong></h3>
-        <div class="container-fluid shadow-lg mb-5 bg-dark my-5 container-without-padding">
+        <h3 class="display-4 my-5" style="color:var(--marron-claro)">Productos <strong class="display-4"
+                style="color:var(--negro)">Destacados</strong></h3>
+        <div class="container-fluid shadow-lg mb-5 my-5 container-without-padding">
             <div class="brand-bg">
                 <div class="row no-gutters">
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div class=" brand-box">
-                            <i><img
-                                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/icon/p1.png" /></i>
-                            <h3>Jane Lauren Design Chair</h3>
-                            <span>$80.00</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div class=" brand-box">
-                            <i><img
-                                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/icon/p1.png" /></i>
-                            <h3>Jane Lauren Design Chair</h3>
-                            <span>$80.00</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div class=" brand-box">
-                            <i><img
-                                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/icon/p1.png" /></i>
-                            <h3>Jane Lauren Design Chair</h3>
-                            <span>$80.00</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                        <div class=" brand-box">
-                            <i><img
-                                    src="https://plantillashtmlgratis.com/wp-content/themes/helium-child/vista_previa/page261/niture/icon/p1.png" /></i>
-                            <h3>Jane Lauren Design Chair</h3>
-                            <span>$80.00</span>
-                        </div>
-                    </div>
+                <?php
+// Variables de conexión a la base de datos
+$hostname = 'srv1182.hstgr.io';
+$username = 'u270190845_root';
+$password = '2683232Aa';
+$database = 'u270190845_muebleria';
+$port = 3306;
+
+// Conexión a la base de datos
+$conn = new mysqli($hostname, $username, $password, $database, $port);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+// Consulta SQL para obtener 4 muebles aleatorios (o los que necesites)
+$query = "SELECT id, nombre, imagenURL, precio FROM muebles ORDER BY RAND() LIMIT 4";
+$result = $conn->query($query);
+
+// Verificar si hay resultados
+if ($result->num_rows > 0) {
+    // Iterar sobre los resultados
+    while ($row = $result->fetch_assoc()) {
+        // Construir el código HTML
+        echo '<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">';
+        echo '<div class="brand-box">';
+        echo '<a href="http://localhost/proyecto/product_detail.php?id=' . $row['id'] . '"><i><img src="' . $row['imagenURL'] . '" /></i></a>';
+        echo '<h3>' . $row['nombre'] . '</h3>';
+        echo '<span>$' . $row['precio'] . '</span>';
+        echo '</div>';
+        echo '</div>';
+        
+    }
+} else {
+    echo "No se encontraron muebles en la tabla 'muebles'.";
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+?>
+
                 </div>
             </div>
         </div>
@@ -147,41 +238,25 @@
     </div>
 
     <div class="text-center p-4">
-        <h3 class="display-4 my-5" style="color:var(--marron-claro)">Contact <strong class="display-4"
-                style="color:var(--negro)">Us</strong></h3>
-        <div class="row">
+        <h3 class="display-4 my-5" style="color:var(--marron-claro)">Contacta <strong class="display-4"
+                style="color:var(--negro)">Con Nosotros</strong></h3>
+        <div class="row bg-secondary">
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 p-4">
                 <div class="map_section">
                     <div id="map" class="google-map">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d-70.56068388481569!3d41.45496659976631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e52963ac45bbcb%3A0xf05e8d125e82af10!2sDos%20Mas!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.604945069464!2d-77.06160299999999!3d-12.0018145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cefeb843af01%3A0x97a6c479cdf9d9a4!2sMega%20Muebles%20%7C%20San%20Mart%C3%ADn%20de%20Porres!5e0!3m2!1ses-419!2spe!4v1699742903280!5m2!1ses-419!2spe"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 p-4">
-                <form class="main_form shadow-lg">
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Name" type="text" name="Name">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Email" type="text" name="Email">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" placeholder="Phone" type="text" name="Phone">
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Message" type="text" name="Message"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-form">Send</button>
-                    </div>
-                </form>
+<img src="https://lh5.googleusercontent.com/p/AF1QipNd1wbIbg7zh_T6GUvgTzMZUl9XuxHGToSWzRr5=w408-h306-k-no" alt="" class="img-fluid h-100 my-auto">
             </div>
         </div>
     </div>
-        <?php
+    <?php
         include 'footer.php';
     ?>
 
@@ -201,13 +276,17 @@
     --gris-claro: #E8E8E8;
 }
 
+.rush{
+    width:55%;
+}
+
 /* Agrega tus estilos generales aquí */
 .bg-primary {
     padding: 20px;
 }
 
-.card-body h1{
-    color:var(--negro);
+.card-body h1 {
+    color: var(--negro);
 }
 
 .map_section {
@@ -430,7 +509,6 @@ h2 {
 .btn-form:hover {
     background-color: var(--marron-claro);
 }
-
 </style>
 
 </html>

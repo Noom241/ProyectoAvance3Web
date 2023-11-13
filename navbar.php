@@ -6,7 +6,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light stylePerso">
     
 <a class="navbar-brand" href="index.php">
-    <img src="https://i.imgur.com/MVMden7.png" height="40" alt="">
+    <img src="https://i.imgur.com/MVMden7.png" height="50" alt="">
   </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -29,7 +29,10 @@
                           ?>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="index.php">Home</a>
+                                      <a class="nav-link" href="index.php">Inicio</a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a class="nav-link" href="aboutUs.php">Acerca de Nosotros</a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="Producto.php">Productos</a>

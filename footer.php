@@ -36,23 +36,22 @@
             <div class="col-md-4 mb-4">
                 <h5 class="mb-4">Redes Sociales</h5>
                 <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/muebleriajoaquiin?mibextid=2JQ9oc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/muebleriajoaquin/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/+51920838291?text=Hola,%20me%20gustaría%20obtener%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <h5 class="mb-4">Información de Contacto</h5>
-                <p>New York, NY 10012, US</p>
-                <p>Email: info@example.com</p>
-                <p>Teléfono: +01 234 567 88</p>
+                <p>Mega Muebles,San Martín de Porres, Lima-Perú</p>
+                <p>Email: MuebleríaJoaquin@gmail.com</p>
+                <p>Teléfono: +51 934 567 886</p>
             </div>
             <div class="col-md-4 mb-4">
                 <h5 class="mb-4">Enlaces Útiles</h5>
                 <ul class="list-unstyled enlaces-utiles">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Catálogo</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="https://muebleríajoaquín.site">Inicio</a></li>
+                    <li><a href="https://muebleríajoaquín.site/Producto.php">Catálogo</a></li>
                 </ul>
             </div>
         </div>

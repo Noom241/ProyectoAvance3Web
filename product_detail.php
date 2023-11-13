@@ -34,63 +34,102 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Detalles del Producto</title>
+
     <!-- Agrega Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
-        .product-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        .product-image {
-            flex: 1;
-        }
-        .product-details {
-            flex: 1;
-            padding: 20px;
-        }
-        .product-details h1 {
-            font-size: 24px;
-        }
-        .product-details h5 {
-            font-size: 18px;
-        }
-        .product-details p {
-            font-size: 16px;
-        }
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .product-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border:1px solid black;
+        border-radius:50%;
+    }
+
+    .product-details {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .product-details h1 {
+        font-size: 28px;
+        color: #343a40;
+    }
+
+    .product-details h5 {
+        font-size: 20px;
+        color: #007bff;
+        margin-bottom: 15px;
+    }
+
+    .product-details p {
+        font-size: 16px;
+        color: #6c757d;
+    }
+
+    .btn-whatsapp {
+        background-color: #25d366;
+        color: #fff;
+    }
     </style>
 </head>
+
 <body>
-<?php include 'navbar.php'; ?>
-<div class="container mt-5">
-    <div class="product-container">
-        <div class="product-image">
-            <img src="<?php echo $product['imagenURL']; ?>" alt="Imagen del producto" style="max-width: 100%;">
-        </div>
-        <div class="product-details">
-            <h1><?php echo $product['nombre']; ?></h1>
-            <h5>Precio: $<?php echo $product['precio']; ?></h5>
-            <p><strong>Material:</strong> <?php echo $product['material']; ?></p>
-            <p><strong>Estilo:</strong> <?php echo $product['estilo']; ?></p>
-            <p><strong>Color:</strong> <?php echo $product['color']; ?></p>
-            <p><strong>Tipo:</strong> <?php echo $product['tipo']; ?></p>
-            <p><strong>Descripción:</strong> <?php echo $product['descripcion']; ?></p>
-            <a href="#" class="btn btn-primary">Añadir al carrito</a>
+
+    <?php include 'navbar.php'; ?>
+
+    <div class="container mt-5">
+        <div class="product-container row p-5">
+            <div class="product-image col-md-6 col-sm-11">
+                <img src="<?php echo $product['imagenURL']; ?>" alt="Imagen del producto" class="shadow img-fluid mb-5">
+            </div>
+            <div class="product-details col-md-3 col-sm-11">
+                <h1><?php echo $product['nombre']; ?></h1>
+                <h5>Precio: $<?php echo $product['precio']; ?></h5>
+                <p><strong>Material:</strong> <?php echo $product['material']; ?></p>
+                <p><strong>Estilo:</strong> <?php echo $product['estilo']; ?></p>
+                <p><strong>Color:</strong> <?php echo $product['color']; ?></p>
+                <p><strong>Tipo:</strong> <?php echo $product['tipo']; ?></p>
+                <a href="https://wa.me/+51920838291?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20producto%20<?php echo urlencode($product['nombre']); ?>"
+                    class="btn btn-whatsapp" target="_blank">Consulta WhatsApp</a>
+            </div>
+            <div class="card border-dark col-10 mx-auto my-4" style=" padding:0">
+            <h5 class="card-header">Descripción</h5>
+                <div class="card-body text-dark">
+                    <p class="card-text"><?php echo $product['descripcion']; ?></p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="fixed-bottom">
-<?php include 'footer.php'; ?>
-</div>
+    <?php include 'footer.php'; ?>
 
 
-<!-- Agrega Bootstrap JavaScript si es necesario -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <!-- Agrega Bootstrap JavaScript si es necesario -->
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>-->
 </body>
-</html>
 
+</html>
