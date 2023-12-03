@@ -237,8 +237,16 @@ include 'navbar.php';
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['nombre']; ?></h5>
                         <p class="card-text">$<?php echo $row['precio']; ?></p>
-                        <a href="https://wa.me/+51920838291?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20producto%20<?php echo urlencode($row['nombre']); ?>.%20¿Puedes%20proporcionar%20más%20detalles?"
-                            class="btn btn-dark mb-4" target="_blank">Consulta Whatsapp</a>
+                        <a href="https://wa.me/+51920838291?text=<?php
+    if (isset($_SESSION['user_id'])) {
+        // Usuario autenticado, mensaje con nombre personalizado
+        echo 'Hola, mi nombre es ' . urlencode($_SESSION['user_name']) . ', me gustaría obtener más información sobre el producto ' . urlencode($row['nombre']) . '. ¿Puedes proporcionar más detalles?';
+    } else {
+        // Usuario no autenticado, mensaje genérico
+        echo 'Hola, me gustaría obtener más información sobre el producto ' . urlencode($row['nombre']) . '. ¿Puedes proporcionar más detalles?';
+    }
+?>" class="btn btn-dark mb-4" target="_blank">Consulta Whatsapp</a>
+
                     </div>
                 </div>
 

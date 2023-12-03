@@ -216,7 +216,7 @@ if ($result->num_rows > 0) {
         // Construir el código HTML
         echo '<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">';
         echo '<div class="brand-box">';
-        echo '<a href="http://localhost/proyecto/product_detail.php?id=' . $row['id'] . '"><i><img src="' . $row['imagenURL'] . '" /></i></a>';
+        echo '<a href="product_detail.php?id=' . $row['id'] . '"><i><img src="' . $row['imagenURL'] . '" /></i></a>';
         echo '<h3>' . $row['nombre'] . '</h3>';
         echo '<span>$' . $row['precio'] . '</span>';
         echo '</div>';
@@ -259,6 +259,7 @@ $conn->close();
     <?php
         include 'footer.php';
     ?>
+    
 
 
 

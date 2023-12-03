@@ -112,8 +112,16 @@ if (isset($_GET['id'])) {
                 <p><strong>Estilo:</strong> <?php echo $product['estilo']; ?></p>
                 <p><strong>Color:</strong> <?php echo $product['color']; ?></p>
                 <p><strong>Tipo:</strong> <?php echo $product['tipo']; ?></p>
-                <a href="https://wa.me/+51920838291?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20producto%20<?php echo urlencode($product['nombre']); ?>"
-                    class="btn btn-whatsapp" target="_blank">Consulta WhatsApp</a>
+                <a href="https://wa.me/+51920838291?text=<?php
+    if (isset($_SESSION['user_id'])) {
+        // Usuario autenticado, saludo personalizado
+        echo 'Hola, mi nombre es ' . urlencode($_SESSION['user_name']) . ', me gustaría obtener más información sobre el producto ' . urlencode($product['nombre']);
+    } else {
+        // Usuario no autenticado, saludo genérico
+        echo 'Hola, me gustaría obtener más información sobre el producto ' . urlencode($product['nombre']);
+    }
+?>" class="btn btn-whatsapp" target="_blank">Consulta WhatsApp</a>
+
             </div>
             <div class="card border-dark col-10 mx-auto my-4" style=" padding:0">
             <h5 class="card-header">Descripción</h5>

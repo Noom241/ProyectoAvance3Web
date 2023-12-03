@@ -38,7 +38,16 @@
                 <div class="social-icons">
                     <a href="https://www.facebook.com/muebleriajoaquiin?mibextid=2JQ9oc" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/muebleriajoaquin/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/+51920838291?text=Hola,%20me%20gustaría%20obtener%20más%20información" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://wa.me/+51920838291?text=<?php
+    if (isset($_SESSION['user_id'])) {
+        // Usuario autenticado, saludo personalizado
+        echo 'Hola, mi nombre es ' . urlencode($_SESSION['user_name']) . ', me gustaría obtener más información';
+    } else {
+        // Usuario no autenticado, saludo genérico
+        echo 'Hola, me gustaría obtener más información';
+    }
+?>" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
                 </div>
             </div>
             <div class="col-md-4 mb-4">

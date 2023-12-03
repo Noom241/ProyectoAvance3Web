@@ -44,7 +44,7 @@
                             echo '<a class="nav-link" href="logout.php">Cerrar Sesión</a>';
                           } else {
                             // Si el usuario no ha iniciado sesión, muestra un botón para iniciar sesión
-                            echo '<a class="nav-link" href="login.html">Iniciar Sesión</a>';
+                            echo '<a class="nav-link" href="login.php">Iniciar Sesión</a>';
                           }
                           ?>
                     </li>
@@ -52,3 +52,5 @@
             </ul>
         </div>
     </nav>
+
+    <?php include 'chatbot.php'; ?>
